@@ -2,10 +2,10 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>AnimeVerse</title>
+    <title>BlueVerse Anime</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Font -->
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -17,26 +17,26 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: #fff;
             min-height: 100vh;
+            background: linear-gradient(135deg, #020b2d, #041f5a, #0a3d91);
+            color: #eaf3ff;
         }
 
         header {
-            padding: 20px 50px;
+            padding: 25px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            backdrop-filter: blur(10px);
         }
 
         header h1 {
-            color: #ff4ecd;
             font-size: 28px;
+            color: #4da3ff;
+            letter-spacing: 1px;
         }
 
         nav a {
-            color: #fff;
+            color: #eaf3ff;
             text-decoration: none;
             margin-left: 25px;
             font-weight: 500;
@@ -44,67 +44,59 @@
         }
 
         nav a:hover {
-            color: #ff4ecd;
+            color: #4da3ff;
         }
 
         .hero {
+            padding: 90px 20px;
             text-align: center;
-            padding: 80px 20px;
+            max-width: 900px;
+            margin: auto;
         }
 
         .hero h2 {
-            font-size: 42px;
-            margin-bottom: 15px;
+            font-size: 46px;
+            margin-bottom: 20px;
         }
 
         .hero span {
-            color: #ff4ecd;
+            color: #4da3ff;
         }
 
         .hero p {
-            max-width: 600px;
-            margin: auto;
-            opacity: 0.85;
+            font-size: 16px;
+            line-height: 1.8;
+            opacity: 0.9;
         }
 
-        .anime-section {
-            padding: 50px;
+        .anime-list {
+            padding: 60px 40px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
         }
 
-        .card {
+        .anime-card {
             background: rgba(255,255,255,0.08);
-            border-radius: 15px;
-            overflow: hidden;
+            border-radius: 16px;
+            padding: 25px;
             transition: 0.4s;
-            cursor: pointer;
         }
 
-        .card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 0 30px rgba(255,78,205,0.5);
+        .anime-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px rgba(77,163,255,0.5);
         }
 
-        .card img {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
+        .anime-card h3 {
+            color: #4da3ff;
+            margin-bottom: 12px;
         }
 
-        .card-content {
-            padding: 15px;
-        }
-
-        .card-content h3 {
-            color: #ff4ecd;
-            margin-bottom: 8px;
-        }
-
-        .card-content p {
+        .anime-card p {
             font-size: 14px;
-            opacity: 0.85;
+            line-height: 1.7;
+            opacity: 0.9;
         }
 
         footer {
@@ -118,57 +110,66 @@
 <body>
 
 <header>
-    <h1>AnimeVerse</h1>
+    <h1>BlueVerse</h1>
     <nav>
         <a href="#">Home</a>
+        <a href="#">Story</a>
         <a href="#">Anime</a>
         <a href="#">About</a>
-        <a href="#">Contact</a>
     </nav>
 </header>
 
 <section class="hero">
-    <h2>Welcome to <span>AnimeVerse</span></h2>
-    <p>Dunia anime modern dengan desain futuristik, karakter ikonik, dan cerita epik yang tak terlupakan.</p>
+    <h2>Dunia <span>Anime</span> & Cerita Tanpa Batas</h2>
+    <p>
+        Anime bukan sekadar tontonan, tapi dunia penuh imajinasi, perjuangan,
+        dan emosi. Dari karakter yang lemah lalu menjadi kuat, hingga kisah
+        pengorbanan demi masa depan yang lebih baik.  
+        Setiap anime punya latar cerita unik yang mengajarkan arti tekad,
+        persahabatan, dan harapan.
+    </p>
 </section>
 
-<section class="anime-section">
-    <div class="card">
-        <img src="https://i.imgur.com/Z9bKzGf.jpg" alt="Anime">
-        <div class="card-content">
-            <h3>Naruto</h3>
-            <p>Kisah ninja dengan mimpi menjadi Hokage dan melindungi desa.</p>
-        </div>
+<section class="anime-list">
+
+    <div class="anime-card">
+        <h3>Tensei Shitara Slime Datta Ken</h3>
+        <p>
+            Kisah reinkarnasi seorang pria biasa yang terlahir kembali sebagai
+            slime dengan kekuatan luar biasa, membangun dunia damai antara
+            monster dan manusia.
+        </p>
     </div>
 
-    <div class="card">
-        <img src="https://i.imgur.com/LG6ZbJg.jpg" alt="Anime">
-        <div class="card-content">
-            <h3>Attack on Titan</h3>
-            <p>Perjuangan umat manusia melawan Titan raksasa.</p>
-        </div>
+    <div class="anime-card">
+        <h3>Jujutsu Kaisen</h3>
+        <p>
+            Dunia gelap penuh kutukan, penyihir jujutsu, dan pertarungan brutal
+            melawan makhluk yang lahir dari emosi negatif manusia.
+        </p>
     </div>
 
-    <div class="card">
-        <img src="https://i.imgur.com/6XnJ0ZT.jpg" alt="Anime">
-        <div class="card-content">
-            <h3>Demon Slayer</h3>
-            <p>Pemburu iblis dengan visual pedang yang memukau.</p>
-        </div>
+    <div class="anime-card">
+        <h3>Kimetsu no Yaiba</h3>
+        <p>
+            Perjalanan seorang kakak yang berjuang melawan iblis demi
+            menyelamatkan adiknya dan membalas kematian keluarganya.
+        </p>
     </div>
 
-    <div class="card">
-        <img src="https://i.imgur.com/5Kk1Z1Z.jpg" alt="Anime">
-        <div class="card-content">
-            <h3>Jujutsu Kaisen</h3>
-            <p>Dunia kutukan, penyihir, dan pertarungan brutal.</p>
-        </div>
+    <div class="anime-card">
+        <h3>Attack on Titan</h3>
+        <p>
+            Manusia bertahan hidup di balik tembok raksasa, menghadapi Titan
+            sambil mengungkap rahasia kelam tentang dunia dan kebebasan.
+        </p>
     </div>
+
 </section>
 
 <footer>
-    © 2026 AnimeVerse • Designed with ❤️
+    © 2026 BlueVerse Anime • Blue Theme Only 💙
 </footer>
 
 </body>
-  </html>
+</html>
