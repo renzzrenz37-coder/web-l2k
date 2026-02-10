@@ -1,175 +1,399 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>BlueVerse Anime</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlueVerse</title>
 
-    <!-- Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+body{
+  background: linear-gradient(135deg,#020024,#090979,#00d4ff);
+  color:white;
+  min-height:100vh;
+}
 
-        body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #020b2d, #041f5a, #0a3d91);
-            color: #eaf3ff;
-        }
+/* NAVBAR */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 24px;
+}
 
-        header {
-            padding: 25px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+nav h1{
+  color:#4fc3ff;
+}
 
-        header h1 {
-            font-size: 28px;
-            color: #4da3ff;
-            letter-spacing: 1px;
-        }
+nav a{
+  color:white;
+  margin-left:15px;
+  text-decoration:none;
+  font-weight:500;
+}
 
-        nav a {
-            color: #eaf3ff;
-            text-decoration: none;
-            margin-left: 25px;
-            font-weight: 500;
-            transition: 0.3s;
-        }
+nav a:hover{
+  color:#4fc3ff;
+}
 
-        nav a:hover {
-            color: #4da3ff;
-        }
+/* SECTION */
+section{
+  display:none;
+  padding:40px 20px;
+  animation: fade .4s ease;
+}
 
-        .hero {
-            padding: 90px 20px;
-            text-align: center;
-            max-width: 900px;
-            margin: auto;
-        }
+section.active{
+  display:block;
+}
 
-        .hero h2 {
-            font-size: 46px;
-            margin-bottom: 20px;
-        }
+@keyframes fade{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
 
-        .hero span {
-            color: #4da3ff;
-        }
+/* HERO */
+.hero{
+  text-align:center;
+  margin-top:40px;
+}
 
-        .hero p {
-            font-size: 16px;
-            line-height: 1.8;
-            opacity: 0.9;
-        }
+.hero h2{
+  font-size:2rem;
+}
 
-        .anime-list {
-            padding: 60px 40px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-        }
+.hero span{
+  color:#4fc3ff;
+}
 
-        .anime-card {
-            background: rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 25px;
-            transition: 0.4s;
-        }
+/* CARD */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  margin-top:30px;
+}
 
-        .anime-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 25px rgba(77,163,255,0.5);
-        }
+.card{
+  background:rgba(255,255,255,0.08);
+  border-radius:15px;
+  padding:20px;
+  cursor:pointer;
+  transition:.3s;
+}
 
-        .anime-card h3 {
-            color: #4da3ff;
-            margin-bottom: 12px;
-        }
+.card:hover{
+  transform:scale(1.05);
+  background:rgba(79,195,255,0.2);
+}
 
-        .anime-card p {
-            font-size: 14px;
-            line-height: 1.7;
-            opacity: 0.9;
-        }
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            opacity: 0.7;
-        }
-    </style>
+.modal.active{
+  display:flex;
+}
+
+.modal-box{
+  background:#061a2f;
+  padding:25px;
+  border-radius:15px;
+  max-width:350px;
+}
+
+.close{
+  margin-top:15px;
+  background:#4fc3ff;
+  border:none;
+  padding:10px;
+  width:100%;
+  border-radius:10px;
+  cursor:pointer;
+}
+</style>
 </head>
+
 <body>
 
-<header>
-    <h1>BlueVerse</h1>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Story</a>
-        <a href="#">Anime</a>
-        <a href="#">About</a>
-    </nav>
-</header>
+<nav>
+  <h1>BlueVerse</h1>
+  <div>
+    <a onclick="openPage('home')">Home</a>
+    <a onclick="openPage('anime')">Anime</a>
+    <a onclick="openPage('about')">About</a>
+  </div>
+</nav>
 
-<section class="hero">
+<!-- HOME -->
+<section id="home" class="active">
+  <div class="hero">
     <h2>Dunia <span>Anime</span> & Cerita Tanpa Batas</h2>
-    <p>
-        Anime bukan sekadar tontonan, tapi dunia penuh imajinasi, perjuangan,
-        dan emosi. Dari karakter yang lemah lalu menjadi kuat, hingga kisah
-        pengorbanan demi masa depan yang lebih baik.  
-        Setiap anime punya latar cerita unik yang mengajarkan arti tekad,
-        persahabatan, dan harapan.
-    </p>
+    <p>Website anime modern, cepat, dan interaktif.</p>
+  </div>
 </section>
 
-<section class="anime-list">
-
-    <div class="anime-card">
-        <h3>Tensei Shitara Slime Datta Ken</h3>
-        <p>
-            Kisah reinkarnasi seorang pria biasa yang terlahir kembali sebagai
-            slime dengan kekuatan luar biasa, membangun dunia damai antara
-            monster dan manusia.
-        </p>
+<!-- ANIME -->
+<section id="anime">
+  <h2>Anime Populer</h2>
+  <div class="cards">
+    <div class="card" onclick="showDetail('Naruto','Kisah ninja yang ingin menjadi Hokage')">
+      <h3>Naruto</h3>
+      <p>Action • Ninja</p>
     </div>
-
-    <div class="anime-card">
-        <h3>Jujutsu Kaisen</h3>
-        <p>
-            Dunia gelap penuh kutukan, penyihir jujutsu, dan pertarungan brutal
-            melawan makhluk yang lahir dari emosi negatif manusia.
-        </p>
+    <div class="card" onclick="showDetail('One Piece','Petualangan bajak laut mencari One Piece')">
+      <h3>One Piece</h3>
+      <p>Adventure • Pirate</p>
     </div>
-
-    <div class="anime-card">
-        <h3>Kimetsu no Yaiba</h3>
-        <p>
-            Perjalanan seorang kakak yang berjuang melawan iblis demi
-            menyelamatkan adiknya dan membalas kematian keluarganya.
-        </p>
+    <div class="card" onclick="showDetail('Jujutsu Kaisen','Pertarungan kutukan dan penyihir')">
+      <h3>Jujutsu Kaisen</h3>
+      <p>Dark • Action</p>
     </div>
-
-    <div class="anime-card">
-        <h3>Attack on Titan</h3>
-        <p>
-            Manusia bertahan hidup di balik tembok raksasa, menghadapi Titan
-            sambil mengungkap rahasia kelam tentang dunia dan kebebasan.
-        </p>
-    </div>
-
+  </div>
 </section>
 
-<footer>
-    © 2026 BlueVerse Anime • Blue Theme Only 💙
-</footer>
+<!-- ABOUT -->
+<section id="about">
+  <h2>Tentang BlueVerse</h2>
+  <p>BlueVerse adalah website anime modern dengan desain futuristik dan interaktif.</p>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h3 id="modalTitle"></h3>
+    <p id="modalText"></p>
+    <button class="close" onclick="closeModal()">Tutup</button>
+  </div>
+</div>
+
+<script>
+function openPage(page){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(page).classList.add('active');
+}
+
+function showDetail(title,text){
+  document.getElementById('modalTitle').innerText = title;
+  document.getElementById('modalText').innerText = text;
+  document.getElementById('modal').classList.add('active');
+}
+
+function closeModal(){
+  document.getElementById('modal').classList.remove('active');
+}
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlueVerse</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+  background: linear-gradient(135deg,#020024,#090979,#00d4ff);
+  color:white;
+  min-height:100vh;
+}
+
+/* NAVBAR */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 24px;
+}
+
+nav h1{
+  color:#4fc3ff;
+}
+
+nav a{
+  color:white;
+  margin-left:15px;
+  text-decoration:none;
+  font-weight:500;
+}
+
+nav a:hover{
+  color:#4fc3ff;
+}
+
+/* SECTION */
+section{
+  display:none;
+  padding:40px 20px;
+  animation: fade .4s ease;
+}
+
+section.active{
+  display:block;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  margin-top:40px;
+}
+
+.hero h2{
+  font-size:2rem;
+}
+
+.hero span{
+  color:#4fc3ff;
+}
+
+/* CARD */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  margin-top:30px;
+}
+
+.card{
+  background:rgba(255,255,255,0.08);
+  border-radius:15px;
+  padding:20px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:scale(1.05);
+  background:rgba(79,195,255,0.2);
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal.active{
+  display:flex;
+}
+
+.modal-box{
+  background:#061a2f;
+  padding:25px;
+  border-radius:15px;
+  max-width:350px;
+}
+
+.close{
+  margin-top:15px;
+  background:#4fc3ff;
+  border:none;
+  padding:10px;
+  width:100%;
+  border-radius:10px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h1>BlueVerse</h1>
+  <div>
+    <a onclick="openPage('home')">Home</a>
+    <a onclick="openPage('anime')">Anime</a>
+    <a onclick="openPage('about')">About</a>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="active">
+  <div class="hero">
+    <h2>Dunia <span>Anime</span> & Cerita Tanpa Batas</h2>
+    <p>Website anime modern, cepat, dan interaktif.</p>
+  </div>
+</section>
+
+<!-- ANIME -->
+<section id="anime">
+  <h2>Anime Populer</h2>
+  <div class="cards">
+    <div class="card" onclick="showDetail('Naruto','Kisah ninja yang ingin menjadi Hokage')">
+      <h3>Naruto</h3>
+      <p>Action • Ninja</p>
+    </div>
+    <div class="card" onclick="showDetail('One Piece','Petualangan bajak laut mencari One Piece')">
+      <h3>One Piece</h3>
+      <p>Adventure • Pirate</p>
+    </div>
+    <div class="card" onclick="showDetail('Jujutsu Kaisen','Pertarungan kutukan dan penyihir')">
+      <h3>Jujutsu Kaisen</h3>
+      <p>Dark • Action</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>Tentang BlueVerse</h2>
+  <p>BlueVerse adalah website anime modern dengan desain futuristik dan interaktif.</p>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h3 id="modalTitle"></h3>
+    <p id="modalText"></p>
+    <button class="close" onclick="closeModal()">Tutup</button>
+  </div>
+</div>
+
+<script>
+function openPage(page){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(page).classList.add('active');
+}
+
+function showDetail(title,text){
+  document.getElementById('modalTitle').innerText = title;
+  document.getElementById('modalText').innerText = text;
+  document.getElementById('modal').classList.add('active');
+}
+
+function closeModal(){
+  document.getElementById('modal').classList.remove('active');
+}
+</script>
 
 </body>
 </html>
