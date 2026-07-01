@@ -1,255 +1,329 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Cyber Security System</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<title>DonghuaVerse - Watch Donghua Online</title>
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-body{
-  font-family:'Orbitron',sans-serif;
-  background:#000;
-  color:#00ffcc;
-  overflow-x:hidden;
-}
+<link rel="stylesheet" href="style.css">
 
-/* MATRIX CANVAS */
-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  z-index:-1;
-}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-/* HEADER */
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 60px;
-  border-bottom:1px solid rgba(0,255,204,.2);
-  backdrop-filter: blur(6px);
-}
-header h1{
-  letter-spacing:3px;
-}
-nav a{
-  margin-left:25px;
-  color:#00ffcc;
-  text-decoration:none;
-  transition:.3s;
-}
-nav a:hover{
-  color:#fff;
-  text-shadow:0 0 10px #00ffcc;
-}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-/* HERO */
-.hero{
-  text-align:center;
-  padding:130px 20px 80px;
-}
-.hero h2{
-  font-size:50px;
-  text-shadow:0 0 25px #00ffcc;
-}
-.typing{
-  margin-top:20px;
-  font-family:'Share Tech Mono',monospace;
-  color:#b6fff1;
-  font-size:18px;
-}
-.btn{
-  display:inline-block;
-  margin-top:40px;
-  padding:15px 45px;
-  border:2px solid #00ffcc;
-  border-radius:30px;
-  color:#00ffcc;
-  text-decoration:none;
-  box-shadow:0 0 20px rgba(0,255,204,.4);
-  transition:.3s;
-}
-.btn:hover{
-  background:#00ffcc;
-  color:#000;
-  box-shadow:0 0 40px #00ffcc;
-}
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-/* FEATURES */
-.features{
-  padding:80px 60px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:30px;
-}
-.card{
-  background:rgba(0,255,204,.05);
-  border:1px solid rgba(0,255,204,.2);
-  padding:30px;
-  border-radius:15px;
-  transition:.3s;
-}
-.card:hover{
-  transform:translateY(-12px);
-  box-shadow:0 0 30px rgba(0,255,204,.6);
-}
-.card h3{
-  margin-bottom:15px;
-}
-
-/* SCANNER */
-.scanner{
-  text-align:center;
-  padding:80px 20px;
-}
-.progress{
-  width:60%;
-  margin:30px auto;
-  height:20px;
-  border:1px solid #00ffcc;
-  border-radius:20px;
-  overflow:hidden;
-}
-.bar{
-  height:100%;
-  width:0%;
-  background:#00ffcc;
-  animation:scan 6s infinite;
-}
-@keyframes scan{
-  0%{width:0}
-  50%{width:100%}
-  100%{width:0}
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:20px;
-  border-top:1px solid rgba(0,255,204,.2);
-  font-size:13px;
-  color:#88ffee;
-}
-</style>
 </head>
 
 <body>
 
-<canvas id="matrix"></canvas>
+<!-- Loading -->
+
+<div id="loading">
+
+<div class="loader"></div>
+
+<h2>DonghuaVerse</h2>
+
+</div>
+
+<!-- Navbar -->
 
 <header>
-  <h1>CYBER•SEC</h1>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Defense</a>
-    <a href="#">Scanner</a>
-    <a href="#">Contact</a>
-  </nav>
+
+<nav>
+
+<div class="logo">
+
+<i class="fa-solid fa-dragon"></i>
+
+DonghuaVerse
+
+</div>
+
+<ul>
+
+<li><a href="#">Home</a></li>
+
+<li><a href="#trending">Trending</a></li>
+
+<li><a href="#ongoing">Ongoing</a></li>
+
+<li><a href="#completed">Completed</a></li>
+
+<li><a href="#schedule">Schedule</a></li>
+
+</ul>
+
+<div class="icons">
+
+<i class="fa-solid fa-magnifying-glass" id="searchBtn"></i>
+
+<i class="fa-solid fa-heart"></i>
+
+<i class="fa-solid fa-moon" id="darkMode"></i>
+
+</div>
+
+</nav>
+
 </header>
 
+<!-- Hero -->
+
 <section class="hero">
-  <h2>Cyber Security System</h2>
-  <div class="typing" id="typing"></div>
-  <a href="#" class="btn">Initialize Scan</a>
+
+<div class="overlay"></div>
+
+<div class="hero-content">
+
+<h1>
+
+Perfect World
+
+</h1>
+
+<p>
+
+Menjelajahi dunia kultivasi yang penuh misteri,
+
+pertarungan, dan kekuatan para dewa.
+
+</p>
+
+<div class="buttons">
+
+<button class="watch">
+
+<i class="fa-solid fa-play"></i>
+
+Watch Now
+
+</button>
+
+<button class="info">
+
+More Info
+
+</button>
+
+</div>
+
+</div>
+
 </section>
 
-<section class="features">
-  <div class="card">
-    <h3>AI Threat Detection</h3>
-    <p>Automatically detects malware, trojans, and exploits.</p>
-  </div>
-  <div class="card">
-    <h3>Encrypted Network</h3>
-    <p>Protects all traffic with advanced encryption protocols.</p>
-  </div>
-  <div class="card">
-    <h3>Firewall Protection</h3>
-    <p>Blocks unauthorized access in real-time.</p>
-  </div>
-  <div class="card">
-    <h3>24/7 Monitoring</h3>
-    <p>Continuous system surveillance and logging.</p>
-  </div>
+<!-- Trending -->
+
+<section id="trending">
+
+<h2>
+
+🔥 Trending Donghua
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<img src="https://picsum.photos/300/420?1">
+
+<h3>Perfect World</h3>
+
+<span>⭐9.8</span>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/300/420?2">
+
+<h3>Battle Through The Heavens</h3>
+
+<span>⭐9.7</span>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/300/420?3">
+
+<h3>Soul Land</h3>
+
+<span>⭐9.8</span>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/300/420?4">
+
+<h3>Swallowed Star</h3>
+
+<span>⭐9.7</span>
+
+</div>
+
+</div>
+
 </section>
 
-<section class="scanner">
-  <h2>System Scan</h2>
-  <p>Scanning network vulnerabilities...</p>
-  <div class="progress">
-    <div class="bar"></div>
-  </div>
+<!-- Ongoing -->
+
+<section id="ongoing">
+
+<h2>
+
+📺 Ongoing
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<img src="https://picsum.photos/300/420?5">
+
+<h3>Renegade Immortal</h3>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/300/420?6">
+
+<h3>Shrouding The Heavens</h3>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/300/420?7">
+
+<h3>The Demon Hunter</h3>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/300/420?8">
+
+<h3>Apotheosis</h3>
+
+</div>
+
+</div>
+
 </section>
+
+<!-- Completed -->
+
+<section id="completed">
+
+<h2>
+
+🏆 Completed
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<img src="https://picsum.photos/300/420?9">
+
+<h3>Martial Universe</h3>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/300/420?10">
+
+<h3>Dragon Raja</h3>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/300/420?11">
+
+<h3>Stellar Transformation</h3>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/300/420?12">
+
+<h3>Throne of Seal</h3>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Schedule -->
+
+<section id="schedule">
+
+<h2>
+
+📅 Jadwal Rilis
+
+</h2>
+
+<div class="schedule">
+
+<div>Senin - Perfect World</div>
+
+<div>Selasa - BTTH</div>
+
+<div>Rabu - Soul Land</div>
+
+<div>Kamis - Swallowed Star</div>
+
+<div>Jumat - Renegade Immortal</div>
+
+<div>Sabtu - Shrouding The Heavens</div>
+
+<div>Minggu - Apotheosis</div>
+
+</div>
+
+</section>
+
+<!-- Footer -->
 
 <footer>
-  © 2026 Cyber Security | Powered by Secure Core
+
+<h2>
+
+DonghuaVerse
+
+</h2>
+
+<p>
+
+©2026 All Rights Reserved
+
+</p>
+
 </footer>
 
-<script>
-// MATRIX EFFECT
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+<button id="top">
 
-const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const fontSize = 16;
-const columns = canvas.width / fontSize;
-const drops = [];
+↑
 
-for(let x=0;x<columns;x++) drops[x]=1;
+</button>
 
-function drawMatrix(){
-  ctx.fillStyle="rgba(0,0,0,0.05)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle="#00ffcc";
-  ctx.font=fontSize+"px monospace";
-
-  for(let i=0;i<drops.length;i++){
-    const text = letters.charAt(Math.floor(Math.random()*letters.length));
-    ctx.fillText(text,i*fontSize,drops[i]*fontSize);
-    if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
-      drops[i]=0;
-    }
-    drops[i]++;
-  }
-}
-setInterval(drawMatrix,50);
-
-// TYPING EFFECT
-const text = [
-  "Initializing cyber defense protocol...",
-  "Scanning vulnerabilities...",
-  "Firewall status: ACTIVE",
-  "System secured."
-];
-let line = 0;
-let char = 0;
-const typingDiv = document.getElementById("typing");
-
-function type(){
-  if(char < text[line].length){
-    typingDiv.innerHTML += text[line].charAt(char);
-    char++;
-    setTimeout(type,50);
-  }else{
-    setTimeout(()=>{
-      typingDiv.innerHTML="";
-      char=0;
-      line=(line+1)%text.length;
-      type();
-    },1500);
-  }
-}
-type();
-</script>
+<script src="script.js"></script>
 
 </body>
+
 </html>
